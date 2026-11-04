@@ -49,21 +49,33 @@ public sealed class ControlSession : IDisposable
         return targets;
     }
 
-    public ControlSession(WindowTarget target, string evidenceDirectory)
+    public ControlSession(WindowTarget target, string evidenceDirectory, CancellationToken token = default)
     {
         Target = target;
         EvidenceDirectory = evidenceDirectory;
         Directory.CreateDirectory(evidenceDirectory);
         MaaToolkit.Shared.Config.InitOption(evidenceDirectory);
         Controller = new MaaWin32Controller(target.Handle, Win32ScreencapMethods.ScreenDC,
-            Win32InputMethod.Seize, Win32InputMethod.Seize);
-        Tasker = new MaaTasker
+            Win32InputMethod.LegacyEvent, Win32InputMethod.Seize, link: LinkOption.None);
+        MaaResource? resource = null;
+        MaaTasker? tasker = null;
+        try
         {
-            Controller = Controller,
-            Resource = new MaaResource(Path.Combine(AppContext.BaseDirectory, "resources")),
-            DisposeOptions = DisposeOptions.All
-        };
-        if (!Tasker.IsInitialized) throw new InvalidOperationException("MaaFramework 初始化失败。");
+            Check(Controller.LinkStart(), token);
+            resource = new MaaResource();
+            resource.SetOption_InferenceExecutionProvider(InferenceExecutionProvider.CPU);
+            resource.SetOption_InferenceDevice(InferenceDevice.CPU);
+            Check(resource.AppendBundle(Path.Combine(AppContext.BaseDirectory, "resources")), token);
+            tasker = new MaaTasker { Controller = Controller, Resource = resource, DisposeOptions = DisposeOptions.All };
+            if (!tasker.IsInitialized) throw new InvalidOperationException("MaaFramework 初始化失败。");
+            Tasker = tasker;
+        }
+        catch
+        {
+            if (tasker is not null) tasker.Dispose();
+            else { resource?.Dispose(); Controller.Dispose(); }
+            throw;
+        }
     }
 
     public void VerifyTarget()
@@ -79,14 +91,14 @@ public sealed class ControlSession : IDisposable
     {
         VerifyTarget();
         token.ThrowIfCancellationRequested();
-        Check(Controller.Screencap());
+        Check(Controller.Screencap(), token);
         using var image = new MaaImageBuffer();
         if (!Controller.GetCachedImage(image)) throw new InvalidOperationException("无法读取窗口截图。");
         Width = image.Width;
         Height = image.Height;
-        if (image.TryGetEncodedData(out byte[] png)) LastPng = png;
+        if (image.TryGetEncodedData(out byte[]? png)) LastPng = png;
         var job = Tasker.AppendRecognition("OCR", "{\"expected\":[\".+\"],\"threshold\":0.5}", image);
-        Check(job);
+        Check(job, token);
         var node = job.QueryNodeDetail() ?? throw new InvalidOperationException("OCR 没有返回识别节点。");
         if (!Tasker.GetRecognitionDetail<MaaImageBuffer>(node.RecognitionId, out _, out _, out _, null, out var detail, null, null))
             throw new InvalidOperationException("无法读取 OCR 识别结果。");
@@ -106,23 +118,67 @@ public sealed class ControlSession : IDisposable
     {
         token.ThrowIfCancellationRequested();
         VerifyTarget();
-        Check(Controller.Click(x, y, right ? 1 : 0));
+        Check(Controller.Click(x, y, right ? 1 : 0), token);
+    }
+
+    public bool IsChecked(int x, int y, CancellationToken token)
+    {
+        using var image = new MaaImageBuffer();
+        if (!Controller.GetCachedImage(image)) throw new InvalidOperationException("无法检查复选框状态。");
+        var options = JsonSerializer.Serialize(new { roi = new[] { x - 6, y - 6, 12, 12 },
+            lower = new[] { 20, 70, 160 }, upper = new[] { 100, 180, 255 }, count = 15 });
+        var job = Tasker.AppendRecognition("ColorMatch", options, image);
+        Check(job, token);
+        var node = job.QueryNodeDetail() ?? throw new InvalidOperationException("复选框颜色识别失败。");
+        if (!Tasker.GetRecognitionDetail<MaaImageBuffer>(node.RecognitionId, out _, out _, out var hit, null, out _, null, null))
+            throw new InvalidOperationException("无法读取复选框识别结果。");
+        return hit;
     }
 
     public void Key(int key, CancellationToken token)
     {
-        token.ThrowIfCancellationRequested(); VerifyTarget(); Check(Controller.ClickKey(key));
+        token.ThrowIfCancellationRequested(); VerifyTarget(); Check(Controller.ClickKey(key), token);
     }
 
     public void Input(string text, CancellationToken token)
     {
-        token.ThrowIfCancellationRequested(); VerifyTarget(); Check(Controller.InputText(text));
+        token.ThrowIfCancellationRequested(); VerifyTarget(); Check(Controller.InputText(text), token);
     }
+
+    public void Chord(int modifier, int key, CancellationToken token)
+    {
+        token.ThrowIfCancellationRequested(); VerifyTarget();
+        Check(Controller.KeyDown(modifier), token);
+        try { Check(Controller.ClickKey(key), token); }
+        finally { Controller.KeyUp(modifier).Wait(); }
+    }
+
+    public void Hover(int x, int y, CancellationToken token)
+    {
+        token.ThrowIfCancellationRequested(); VerifyTarget(); Check(Controller.TouchMove(0, x, y), token);
+    }
+
+    public void Stop() => Tasker.Stop();
 
     public void SaveEvidence(string name, IReadOnlyList<ScreenText> text)
     {
         File.WriteAllBytes(Path.Combine(EvidenceDirectory, name + ".png"), LastPng);
         File.WriteAllText(Path.Combine(EvidenceDirectory, name + ".json"), JsonSerializer.Serialize(text, new JsonSerializerOptions { WriteIndented = true }));
+    }
+
+    public ControlSession OpenOwnedDialog(string title, CancellationToken token)
+    {
+        using var windows = MaaToolkit.Shared.Desktop.Window.Find();
+        var matches = new List<nint>();
+        foreach (var window in windows)
+        {
+            GetWindowThreadProcessId(window.Handle, out var id);
+            if (id == Target.ProcessId && window.Name.Contains(title) && GetWindow(window.Handle, 4) == Target.Handle)
+                matches.Add(window.Handle);
+        }
+        if (matches.Count != 1) throw new InvalidOperationException("未确认唯一的 MAA 对话框：" + title);
+        var dialogTarget = Target with { Handle = matches[0], Title = title };
+        return new ControlSession(dialogTarget, Path.Combine(EvidenceDirectory, "rename-dialog"), token);
     }
 
     public static void Probe(string output)
@@ -132,12 +188,24 @@ public sealed class ControlSession : IDisposable
         using var session = new ControlSession(candidates[0], Path.GetDirectoryName(Path.GetFullPath(output))!);
         var screen = session.Read(CancellationToken.None);
         File.WriteAllBytes(output + ".png", session.LastPng);
-        File.WriteAllText(output, JsonSerializer.Serialize(new { Framework = MaaGlobal.Shared.Version, session.Target, session.Width, session.Height, Text = screen }, new JsonSerializerOptions { WriteIndented = true }));
+        GetWindowRect(candidates[0].Handle, out var rect);
+        DwmGetWindowAttribute(candidates[0].Handle, 9, out var frame, Marshal.SizeOf<NativeRect>());
+        File.WriteAllText(output, JsonSerializer.Serialize(new { Framework = MaaGlobal.Shared.Version, session.Target, session.Width, session.Height,
+            Dpi = GetDpiForWindow(candidates[0].Handle), WindowBounds = new[] { rect.Left, rect.Top, rect.Right, rect.Bottom },
+            PhysicalBounds = new[] { frame.Left, frame.Top, frame.Right, frame.Bottom }, Text = screen }, new JsonSerializerOptions { WriteIndented = true }));
     }
 
-    private static void Check(MaaJob job)
+    private static void Check(MaaJob job, CancellationToken token = default)
     {
-        var status = job.Wait();
+        var elapsed = Stopwatch.StartNew();
+        var status = job.Status;
+        while (status is MaaJobStatus.Pending or MaaJobStatus.Running)
+        {
+            token.ThrowIfCancellationRequested();
+            if (elapsed.Elapsed > TimeSpan.FromSeconds(20)) throw new TimeoutException("MaaFramework 操作超过 20 秒，已停止后续输入。");
+            Thread.Sleep(40);
+            status = job.Status;
+        }
         if (status != MaaJobStatus.Succeeded) throw new InvalidOperationException($"MaaFramework 操作失败：{status}");
     }
 
@@ -145,4 +213,9 @@ public sealed class ControlSession : IDisposable
 
     [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(nint hWnd, out uint processId);
     [DllImport("user32.dll")] [return: MarshalAs(UnmanagedType.Bool)] private static extern bool IsWindow(nint hWnd);
+    [DllImport("user32.dll")] private static extern uint GetDpiForWindow(nint hWnd);
+    [DllImport("user32.dll")] private static extern bool GetWindowRect(nint hWnd, out NativeRect rect);
+    [DllImport("user32.dll")] private static extern nint GetWindow(nint hWnd, uint command);
+    [DllImport("dwmapi.dll")] private static extern int DwmGetWindowAttribute(nint hWnd, int attribute, out NativeRect rect, int size);
+    [StructLayout(LayoutKind.Sequential)] private struct NativeRect { public int Left, Top, Right, Bottom; }
 }

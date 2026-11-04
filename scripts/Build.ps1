@@ -1,4 +1,4 @@
-param([string]$Scratch = 'D:\AI_work_space\tmp\agent-scratch\20261104-194014-maa-tutorial-dev')
+param([string]$Scratch = 'D:\AI_work_space\tmp\agent-scratch\20261104-194014-maa-tutorial-dev', [switch]$ForceRestore)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $sdk = Join-Path $projectRoot 'dependencies\dotnet-sdk-8.0.427\dotnet.exe'
@@ -15,6 +15,10 @@ $env:TEMP = Join-Path $Scratch 'runtime-temp'
 $env:TMP = $env:TEMP
 New-Item -ItemType Directory -Path $env:TEMP -Force | Out-Null
 $output = Join-Path $projectRoot 'releases\current'
+if ($ForceRestore) {
+    & $sdk restore (Join-Path $projectRoot 'src\MaaTutorialAssistant.csproj') --force --locked-mode
+    if ($LASTEXITCODE -ne 0) { throw 'Dependency restore failed' }
+}
 & $sdk publish (Join-Path $projectRoot 'src\MaaTutorialAssistant.csproj') -c Release --self-contained false -o $output "-p:MaaScratch=$Scratch"
 if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
 $models = Join-Path $projectRoot 'dependencies\ocr'

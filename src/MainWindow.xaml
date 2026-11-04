@@ -10,8 +10,8 @@
     <Grid Grid.Row="1" Margin="0,18,0,0">
       <Grid.ColumnDefinitions><ColumnDefinition Width="240"/><ColumnDefinition Width="18"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
       <StackPanel>
-        <Border BorderBrush="#414141" BorderThickness="1" CornerRadius="3" Padding="12"><TextBlock Text="通过 MAA 新手教程"/></Border>
-        <Border x:Name="RestoreRow" Visibility="Collapsed" BorderBrush="#414141" BorderThickness="1" CornerRadius="3" Padding="12" Margin="0,8,0,0"><TextBlock Text="恢复原主题"/></Border>
+        <Border BorderBrush="#414141" BorderThickness="1" CornerRadius="3" Padding="12"><StackPanel><TextBlock Text="通过 MAA 新手教程"/><TextBlock x:Name="TutorialStatus" Text="等待执行" Margin="0,6,0,0" Foreground="#B3B3B3" FontSize="12"/></StackPanel></Border>
+        <Border x:Name="RestoreRow" Visibility="Collapsed" BorderBrush="#414141" BorderThickness="1" CornerRadius="3" Padding="12" Margin="0,8,0,0"><StackPanel><TextBlock Text="恢复原主题"/><TextBlock x:Name="RestoreStatus" Text="等待教程完成" Margin="0,6,0,0" Foreground="#B3B3B3" FontSize="12"/></StackPanel></Border>
         <Button x:Name="AddButton" Margin="0,12,0,0" Height="34" Click="AddTask" ToolTip="添加任务">
           <Button.ContextMenu><ContextMenu><MenuItem Header="恢复原主题" Click="AddRestore"/></ContextMenu></Button.ContextMenu>
           <Path Stroke="#49ABDF" StrokeThickness="1.5" Data="M0,6 H12 M6,0 V12" Width="12" Height="12"/>
@@ -19,12 +19,12 @@
       </StackPanel>
       <Grid Grid.Column="2">
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
-        <TextBlock x:Name="StatusText" Text="准备接入 MaaFramework" FontSize="18" Margin="0,0,0,14" TextWrapping="Wrap"/>
+        <TextBlock x:Name="StatusText" Text="正在准备" FontSize="18" Margin="0,0,0,14" TextWrapping="Wrap"/>
         <TextBox x:Name="LogText" Grid.Row="1" IsReadOnly="True" Background="#202020" BorderBrush="#414141" Foreground="#D9D9D9" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Padding="12"/>
       </Grid>
     </Grid>
     <DockPanel Grid.Row="2" LastChildFill="True" Margin="0,12,0,0">
-      <Button x:Name="StopButton" DockPanel.Dock="Left" Width="150" Content="停止" Click="Stop"/>
+      <Button x:Name="StopButton" DockPanel.Dock="Left" Width="150" Content="停止（F8）" Click="Stop"/>
       <Button x:Name="RetryButton" DockPanel.Dock="Right" Width="100" Content="重试" Margin="12,0,0,0" Click="Retry"/>
       <TextBlock x:Name="SummaryText" Text="MaaFramework · 本地运行" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#B3B3B3"/>
     </DockPanel>
