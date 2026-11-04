@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup>
-    <MaaScratch Condition="'$(MaaScratch)' == ''">D:\AI_work_space\tmp\agent-scratch\20261104-194014-maa-tutorial-dev</MaaScratch>
+    <MaaScratch Condition="'$(MaaScratch)' == ''">$([System.IO.Path]::GetTempPath())maa-tutorial-assistant-build</MaaScratch>
     <BaseIntermediateOutputPath>$(MaaScratch)\obj\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
     <BaseOutputPath>$(MaaScratch)\bin\</BaseOutputPath>
   </PropertyGroup>

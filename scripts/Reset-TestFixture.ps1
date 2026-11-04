@@ -1,5 +1,5 @@
 param([ValidateSet('Dark', 'Light', 'SyncWithOs')][string]$Theme = 'Dark', [switch]$Launch,
-    [string]$Scratch = 'D:\AI_work_space\tmp\agent-scratch\20261104-194014-maa-tutorial-dev')
+    [string]$Scratch = (Join-Path ([IO.Path]::GetTempPath()) 'maa-tutorial-assistant-build'))
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $fixture = [IO.Path]::GetFullPath((Join-Path $projectRoot 'test-environments\maa-v6.21.3'))

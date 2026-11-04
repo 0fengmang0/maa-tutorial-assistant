@@ -1,4 +1,4 @@
-param([string]$Scratch = 'D:\AI_work_space\tmp\agent-scratch\20261104-194014-maa-tutorial-dev')
+param([string]$Scratch = (Join-Path ([IO.Path]::GetTempPath()) 'maa-tutorial-assistant-build'))
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $manifest = Get-Content -LiteralPath (Join-Path $projectRoot 'docs\dependency-models.json') -Raw | ConvertFrom-Json

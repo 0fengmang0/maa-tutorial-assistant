@@ -1,4 +1,4 @@
-param([string]$Scratch = 'D:\AI_work_space\tmp\agent-scratch\20261104-194014-maa-tutorial-dev')
+param([string]$Scratch = (Join-Path ([IO.Path]::GetTempPath()) 'maa-tutorial-assistant-build'))
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $sdkRoot = Join-Path $projectRoot 'dependencies\dotnet-sdk-8.0.427'
