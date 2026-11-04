@@ -2,6 +2,8 @@
 
 基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 的 Windows 本地工具，帮助用户通过 MAA 新手教程，并按需恢复原主题。独立项目，非 MAA 官方产品。
 
+公开源码仓库：<https://github.com/0fengmang0/maa-tutorial-assistant>。默认分支为 `main`，当前提供源码与构建说明。
+
 ## 功能
 
 - MAA 风格深色三栏界面：左侧勾选任务、中间切换详情、右侧查看运行或当前任务日志。

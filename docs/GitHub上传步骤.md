@@ -1,6 +1,8 @@
 # GitHub 上传步骤
 
-本轮交付为可公开上传的**源码仓库和源码 ZIP**。源码包含原创 MIT 许可证、依赖声明、固定版本/模型哈希及构建脚本；没有把本机 MAA 安装、用户配置、主题恢复记录、日志、截图、开发 SDK 或二进制运行库上传。尚未执行添加远程、推送或公开发布。
+本轮交付为已公开上传的**源码仓库**和本地源码 ZIP。源码包含原创 MIT 许可证、依赖声明、固定版本/模型哈希及构建脚本；没有把本机 MAA 安装、用户配置、主题恢复记录、日志、截图、开发 SDK 或二进制运行库上传。
+
+2026-11-04 已按用户授权创建公开仓库 <https://github.com/0fengmang0/maa-tutorial-assistant>，配置 `origin` 并推送 `main`。本机不需要重复创建仓库或添加远程，可直接从下方「后续更新」继续；首次发布步骤供重建或参考。未创建二进制 Release。
 
 正式项目目录：
 
@@ -23,7 +25,7 @@
 5. 选择 Public（公开）或 Private（私有）。
 6. **不要**勾选自动添加 README、`.gitignore` 或 License：本地已有这些文件，保持远程为空可直接推送。
 7. 点击 **Create repository**。
-8. 复制新仓库的 HTTPS 地址，例如 `https://github.com/YOUR_USERNAME/maa-tutorial-assistant.git`。
+8. 复制新仓库的 HTTPS 地址，本项目为 `https://github.com/0fengmang0/maa-tutorial-assistant.git`。
 
 ### 2. 打开 PowerShell，进入正式项目目录
 
@@ -35,14 +37,14 @@ git log -1 --oneline
 git remote -v
 ```
 
-本次收尾后主分支应为 `main`，`git status --short` 应为空。本次没有配置远程；最后一条预期无输出。若你后来增加了远程，先确认地址，不要重复添加或盲目覆盖。
+当前主分支为 `main`，`git status --short` 应为空。`origin` 已指向 `https://github.com/0fengmang0/maa-tutorial-assistant.git`；先确认地址，不要重复添加或盲目覆盖。
 
 ### 3. 添加你的远程地址并上传
 
-将下方 `YOUR_USERNAME` 替换为你自己的 GitHub 用户名；仓库名如果修改了，也一起替换。
+以下只适用于尚未配置远程的新副本；本机已经执行完成，后续直接 `git push`。其他用户请替换账号和仓库名。
 
 ```powershell
-git remote add origin https://github.com/YOUR_USERNAME/maa-tutorial-assistant.git
+git remote add origin https://github.com/0fengmang0/maa-tutorial-assistant.git
 git push -u origin main
 ```
 
@@ -113,7 +115,7 @@ Get-Content .\releases\github\SOURCE_INFO.txt
 需要 Windows x64、Git 和 PowerShell 7。构建脚本会准备项目内固定版本 SDK、NuGet 依赖和 OCR 模型：
 
 ```powershell
-git clone https://github.com/YOUR_USERNAME/maa-tutorial-assistant.git
+git clone https://github.com/0fengmang0/maa-tutorial-assistant.git
 Set-Location .\maa-tutorial-assistant
 pwsh -NoProfile -File .\scripts\Build.ps1 -ForceRestore
 ```
@@ -126,4 +128,4 @@ pwsh -NoProfile -File .\scripts\Build.ps1 -ForceRestore
 pwsh -NoProfile -File .\scripts\Build.ps1 -Scratch 'D:\AI_work_space\tmp\agent-scratch\你的本次任务目录' -ForceRestore
 ```
 
-本文是操作说明，不表示已进行跨电脑启动验证。当前远程地址、账号和公开 URL 由你创建仓库后确定。
+源码仓库公开性、默认分支和远端提交通过 GitHub API 核查；这不表示已进行跨电脑启动验证。当前账号为 `0fengmang0`，仓库地址见本文开头。
