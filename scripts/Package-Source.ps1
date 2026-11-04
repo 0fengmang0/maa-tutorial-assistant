@@ -19,7 +19,7 @@ $hash = (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLowerI
     "Packaged UTC: $([DateTimeOffset]::UtcNow.ToString('O'))"
     "Content: committed source and documentation only; no Git database or local runtime/user data."
     "License: MIT for original assistant source; third-party terms in THIRD_PARTY_NOTICES.md."
-    "Instructions: docs/GitHub上传步骤.md"
+    "Instructions: README.md"
 ) | Set-Content -LiteralPath (Join-Path $OutputDirectory 'SOURCE_INFO.txt') -Encoding utf8NoBOM
 Write-Output $archivePath
 Write-Output "SHA256: $hash"

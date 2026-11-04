@@ -1,75 +1,73 @@
+<div align="center">
+
 # MAA 教程助手
 
-基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 的 Windows 本地工具，帮助用户通过 MAA 新手教程，并按需恢复原主题。独立项目，非 MAA 官方产品。
+MAA Tutorial Assistant
 
-公开源码仓库：<https://github.com/0fengmang0/maa-tutorial-assistant>。默认分支为 `main`，当前提供源码与构建说明。
+![Windows x64](https://img.shields.io/badge/platform-Windows_x64-blue)
+![.NET 8](https://img.shields.io/badge/.NET-8-512BD4)
+[![MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-## 功能
+**MAA 解放双手，我们先把双手从新手教程里解放出来。**
 
-- MAA 风格深色三栏界面：左侧勾选任务、中间切换详情、右侧查看运行或当前任务日志。
-- **打开后等待，点击「开始」才执行**，自动寻找已打开的一个 MAA 教程窗口。
-- 操作前记录原主题，通过 MAA 设置切为深色，再依靠截图、识别与窗口输入完成教程。
-- 通过左下「＋」追加「恢复原主题」任务，支持亮色、深色和与系统同步；未勾选则保持深色。
-- 运行中点击「停止」或按 **F8** 中断，处理问题后点击「开始」继续。
-- 本地运行，不连接游戏，不运行游戏任务，不用改写完成标记替代教程操作。
+一个帮你通过自动化软件新手教程的自动化软件。
 
-## 兼容范围
+[快速开始](#快速开始) · [源码构建](#从源码构建) · [问题反馈](https://github.com/0fengmang0/maa-tutorial-assistant/issues)
 
-| 项目 | 当前情况 |
-| --- | --- |
-| 系统 | Windows x64，需要 .NET 8 Windows Desktop Runtime x64 |
-| 已有完整流程验证 | MAA **v6.21.3 简体中文**，本机 Windows 11、144 DPI、多屏环境 |
-| MAA v6.21.4 | 不在当前自动化支持范围；仅另开过隔离教程供手动查看 |
-| 其他电脑、缩放、语言或版本 | 未验证 |
+</div>
 
-前台截图和输入会占用鼠标键盘，运行时请保持 MAA 可见，避免同时操作其他窗口。目标丢失、多开、识别不符和超时会停止后续输入，保留原主题记录。
+基于 [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 的 Windows 小工具，通过图像识别和窗口操作完成 MAA 新手教程。
 
-## 使用
+毕竟，准备让软件替自己点鼠标的人，未必想先参加一场点鼠标考试。
 
-1. 打开一个 **MAA v6.21.3 简体中文新手教程**。
-2. 运行 `releases/current/MaaTutorialAssistant.exe`。保留 EXE 同目录全部运行库和 `resources`，不要单独移动 EXE。
-3. 默认勾选「通过 MAA 新手教程」。需要恢复主题时，点击左下「＋」添加并勾选「恢复原主题」。
-4. 点击左下「开始」。运行中该按钮变为「停止」，也可使用 F8。
-5. 点击任务名称或齿轮切换中间详情；右侧可切换「运行日志」和「当前任务」。
+## 亮点功能
 
-「全选」勾选已有任务，「清空」取消全部勾选；没有任务被勾选时不能开始。教程完成后仍可添加恢复任务，再点击开始执行。助手 HUD 始终保持深色。
+- **自动通过教程**：找到已打开的 MAA 教程窗口，点击「开始」后完成引导任务。
+- **自动切换深色**：执行前记录原主题，并将 MAA 切换为深色。
+- **按需恢复主题**：通过「＋」添加恢复任务，完成后切回亮色、深色或与系统同步。
+- **熟悉的三栏界面**：左侧管理任务，中间查看详情，右侧切换运行日志与当前任务日志。
+- **随时停止和继续**：点击「停止」或按 **F8** 中断，处理后点击「开始」继续。
 
-原主题记录保存在运行目录 `data/`。同一个 MAA 进程中会复用未完成记录，避免用已切换的深色覆盖原选项；MAA 重启后不会自动将旧记录应用到新进程。请保留这些记录。
+## 快速开始
+
+当前适配 **MAA v6.21.3 简体中文**，运行环境为 Windows x64 和 [.NET 8 Windows Desktop Runtime x64](https://dotnet.microsoft.com/download/dotnet/8.0)。已验证 Windows 11、144 DPI。
+
+1. 按下方说明[从源码构建](#从源码构建)，生成程序。
+2. 打开一个 MAA 新手教程窗口。
+3. 运行 `releases/current/MaaTutorialAssistant.exe`。
+4. 默认勾选「通过 MAA 新手教程」；需要恢复主题时，点击左下「＋」添加并勾选「恢复原主题」。
+5. 点击「开始」，等待教程完成。
+
+运行时保持 MAA 窗口可见，并将鼠标键盘交给助手。需要中断时按 **F8**。
+
+点击任务名称或齿轮可以切换详情；「全选」勾选已有任务，「清空」取消勾选。教程完成后，也可以单独添加恢复主题任务，再点击「开始」。原主题记录保存在程序目录的 `data/` 中。
 
 ## 从源码构建
 
-需要 Windows x64、Git 和 **PowerShell 7**。构建脚本会准备项目内 SDK 8.0.427、锁定的 NuGet 依赖和固定哈希的 OCR 模型；首次构建需要访问 Microsoft、NuGet 与 GitHub。
+准备 Windows x64、Git 和 [PowerShell 7](https://github.com/PowerShell/PowerShell/releases)，执行：
 
 ```powershell
+git clone https://github.com/0fengmang0/maa-tutorial-assistant.git
+Set-Location .\maa-tutorial-assistant
 pwsh -NoProfile -File .\scripts\Build.ps1 -ForceRestore
 ```
 
-产物位于 `releases/current`。默认缓存位于系统临时目录的 `maa-tutorial-assistant-build`，可通过 `-Scratch '缓存目录'` 指定，不要求存在 D 盘。继续在原工作区开发时，应按工作区规则显式传入集中临时目录。
+脚本会准备固定版本的 .NET SDK、NuGet 依赖和 OCR 模型，产物位于 `releases/current`。运行时保留该目录的完整内容，并安装 .NET 8 Windows Desktop Runtime x64。
 
-本机运行目录不包含整套 .NET 运行时，运行前需要安装 .NET 8 Windows Desktop Runtime x64。当前没有对外发布已完成依赖合规整理的二进制安装包。
+构建缓存默认放在系统临时目录，可通过 `-Scratch '缓存目录'` 指定位置。
 
-## 开发验证
+## 参与开发
 
-准备一个 **v6.21.3** 的隔离副本，仅首次运行 Prepare，关闭该副本后可重复 Reset：
+欢迎通过 [Issues](https://github.com/0fengmang0/maa-tutorial-assistant/issues) 反馈问题或提出适配需求，也欢迎提交 Pull Request。
 
-```powershell
-.\scripts\Prepare-TestFixture.ps1 -Source '你的 MAA v6.21.3 安装路径' -Scratch '你的临时目录'
-.\scripts\Reset-TestFixture.ps1 -Theme Light -Launch -Scratch '你的临时目录'
-```
+反馈时附上 MAA 版本、界面语言、显示缩放和出错步骤，方便复现。
 
-隔离入口禁止游戏核心初始化和自动任务。命令行 `--run-fixture <输出目录> [--restore]` 只允许操作带项目标记的副本；`--theme-test <目录>` 验证主题；`--probe <输出.json>` 导出窗口识别；`--preview-ui` 仅预览界面，不执行任务。
+## 致谢
 
-历史完整流程证据与本轮前端人工验收的边界分别登记在项目文档中，不将构建成功或一张截图视为跨环境验收。
-
-## 文档和发布
-
-- [GitHub 上传详细步骤](docs/GitHub上传步骤.md)：创建空仓库、Git 推送、网页上传、源码 Release 与校验。
-- [给介绍视频 Agent 的提示词](docs/介绍视频Agent提示词.md)：可直接复制的项目功能介绍。
-- [任务书](docs/任务书.md)、[开发过程](docs/开发过程.md)、[项目状态](docs/项目状态.md)、[验收记录](docs/验收记录.md)。
-- [技术方案](docs/技术方案.md)、[第三方组件声明](THIRD_PARTY_NOTICES.md)。
-
-源码打包：正式改动提交后运行 `pwsh -NoProfile -File .\scripts\Package-Source.ps1`，在 `releases/github` 生成源码 ZIP、SHA256 和提交信息。源码包排除开发 SDK、二进制、MAA 安装、用户数据、日志和私有证据；不会自动上传或推送。
+- [MaaAssistantArknights](https://github.com/MaaAssistantArknights/MaaAssistantArknights)：教程的主角，也是这个项目的灵感来源。
+- [MaaFramework](https://github.com/MaaXYZ/MaaFramework) 与 [C# Binding](https://github.com/MaaXYZ/MaaFramework.Binding.CSharp)：图像识别与窗口操作。
+- [HandyControl](https://github.com/HandyOrg/HandyControl)：WPF 界面控件。
 
 ## 许可
 
-原创助手源码使用 [MIT](LICENSE)。MaaFramework、Binding 和其他依赖适用各自许可证，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) 和 `licenses/`。未复制 MAA 源码、XAML、Logo 或游戏素材。包含原生依赖的公开运行包仍有许可和对应源码提供方式的整理事项，不能用本项目 MIT 许可证替代。
+本项目采用 [MIT](LICENSE) 许可证。第三方组件的许可信息见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
