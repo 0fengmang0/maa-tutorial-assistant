@@ -1,142 +1,176 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-04T12:59:42.202Z",
+  "generatedAt": "2026-11-04T13:46:41.3270994Z",
   "title": "Design System: MAA 教程助手",
   "extensions": {
     "colorMeta": {
-      "accent-line": {
+      "accent": {
         "role": "primary",
-        "displayName": "分隔线蓝",
-        "canonical": "#178DD4",
+        "displayName": "任务选择与焦点蓝",
         "tonalRamp": [
-          "oklch(15.00% 0.14312 243.00)",
-          "oklch(26.43% 0.14312 243.00)",
-          "oklch(37.86% 0.14312 243.00)",
-          "oklch(49.29% 0.14312 243.00)",
-          "oklch(60.71% 0.14312 243.00)",
-          "oklch(72.14% 0.14312 243.00)",
-          "oklch(83.57% 0.14312 243.00)",
-          "oklch(95.00% 0.14312 243.00)"
+          "oklch(15.00% 0.15360 244.21)",
+          "oklch(26.43% 0.15360 244.21)",
+          "oklch(37.86% 0.15360 244.21)",
+          "oklch(49.29% 0.15360 244.21)",
+          "oklch(60.71% 0.15360 244.21)",
+          "oklch(72.14% 0.15360 244.21)",
+          "oklch(83.57% 0.15360 244.21)",
+          "oklch(95.00% 0.15360 244.21)"
         ]
       },
-      "accent-content": {
+      "tab-selected": {
         "role": "primary",
-        "displayName": "标题与加号蓝",
-        "canonical": "#49ABDF",
+        "displayName": "分段选中文字蓝",
         "tonalRamp": [
-          "oklch(15.00% 0.11839 235.23)",
-          "oklch(26.43% 0.11839 235.23)",
-          "oklch(37.86% 0.11839 235.23)",
-          "oklch(49.29% 0.11839 235.23)",
-          "oklch(60.71% 0.11839 235.23)",
-          "oklch(72.14% 0.11839 235.23)",
-          "oklch(83.57% 0.11839 235.23)",
-          "oklch(95.00% 0.11839 235.23)"
+          "oklch(15.00% 0.15731 241.71)",
+          "oklch(26.43% 0.15731 241.71)",
+          "oklch(37.86% 0.15731 241.71)",
+          "oklch(49.29% 0.15731 241.71)",
+          "oklch(60.71% 0.15731 241.71)",
+          "oklch(72.14% 0.15731 241.71)",
+          "oklch(83.57% 0.15731 241.71)",
+          "oklch(95.00% 0.15731 241.71)"
         ]
       },
       "window": {
         "role": "neutral",
         "displayName": "窗口深灰",
-        "canonical": "#1C1C1C",
         "tonalRamp": [
-          "oklch(15.00% 0.00000 0)",
-          "oklch(26.43% 0.00000 0)",
-          "oklch(37.86% 0.00000 0)",
-          "oklch(49.29% 0.00000 0)",
-          "oklch(60.71% 0.00000 0)",
-          "oklch(72.14% 0.00000 0)",
-          "oklch(83.57% 0.00000 0)",
-          "oklch(95.00% 0.00000 0)"
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
         ]
       },
       "text": {
         "role": "neutral",
         "displayName": "正文浅灰",
-        "canonical": "#EEEEEE",
         "tonalRamp": [
-          "oklch(15.00% 0.00000 0)",
-          "oklch(26.43% 0.00000 0)",
-          "oklch(37.86% 0.00000 0)",
-          "oklch(49.29% 0.00000 0)",
-          "oklch(60.71% 0.00000 0)",
-          "oklch(72.14% 0.00000 0)",
-          "oklch(83.57% 0.00000 0)",
-          "oklch(95.00% 0.00000 0)"
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
         ]
       },
       "border": {
         "role": "neutral",
-        "displayName": "描边灰",
-        "canonical": "#414141",
+        "displayName": "面板描边灰",
         "tonalRamp": [
-          "oklch(15.00% 0.00000 0)",
-          "oklch(26.43% 0.00000 0)",
-          "oklch(37.86% 0.00000 0)",
-          "oklch(49.29% 0.00000 0)",
-          "oklch(60.71% 0.00000 0)",
-          "oklch(72.14% 0.00000 0)",
-          "oklch(83.57% 0.00000 0)",
-          "oklch(95.00% 0.00000 0)"
+          "oklch(15.00% 0.00843 285.99)",
+          "oklch(26.43% 0.00843 285.99)",
+          "oklch(37.86% 0.00843 285.99)",
+          "oklch(49.29% 0.00843 285.99)",
+          "oklch(60.71% 0.00843 285.99)",
+          "oklch(72.14% 0.00843 285.99)",
+          "oklch(83.57% 0.00843 285.99)",
+          "oklch(95.00% 0.00843 285.99)"
         ]
       },
       "text-muted": {
         "role": "neutral",
         "displayName": "次级文字灰",
-        "canonical": "#B3B3B3",
         "tonalRamp": [
-          "oklch(15.00% 0.00000 0)",
-          "oklch(26.43% 0.00000 0)",
-          "oklch(37.86% 0.00000 0)",
-          "oklch(49.29% 0.00000 0)",
-          "oklch(60.71% 0.00000 0)",
-          "oklch(72.14% 0.00000 0)",
-          "oklch(83.57% 0.00000 0)",
-          "oklch(95.00% 0.00000 0)"
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
         ]
       },
-      "log-surface": {
+      "control-border": {
         "role": "neutral",
-        "displayName": "日志深灰",
-        "canonical": "#202020",
+        "displayName": "控件描边灰",
         "tonalRamp": [
-          "oklch(15.00% 0.00000 0)",
-          "oklch(26.43% 0.00000 0)",
-          "oklch(37.86% 0.00000 0)",
-          "oklch(49.29% 0.00000 0)",
-          "oklch(60.71% 0.00000 0)",
-          "oklch(72.14% 0.00000 0)",
-          "oklch(83.57% 0.00000 0)",
-          "oklch(95.00% 0.00000 0)"
+          "oklch(15.00% 0.00708 285.98)",
+          "oklch(26.43% 0.00708 285.98)",
+          "oklch(37.86% 0.00708 285.98)",
+          "oklch(49.29% 0.00708 285.98)",
+          "oklch(60.71% 0.00708 285.98)",
+          "oklch(72.14% 0.00708 285.98)",
+          "oklch(83.57% 0.00708 285.98)",
+          "oklch(95.00% 0.00708 285.98)"
         ]
       },
-      "log-text": {
+      "hover": {
         "role": "neutral",
-        "displayName": "日志文字灰",
-        "canonical": "#D9D9D9",
+        "displayName": "选择器悬停灰",
         "tonalRamp": [
-          "oklch(15.00% 0.00000 0)",
-          "oklch(26.43% 0.00000 0)",
-          "oklch(37.86% 0.00000 0)",
-          "oklch(49.29% 0.00000 0)",
-          "oklch(60.71% 0.00000 0)",
-          "oklch(72.14% 0.00000 0)",
-          "oklch(83.57% 0.00000 0)",
-          "oklch(95.00% 0.00000 0)"
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "button-hover": {
+        "role": "neutral",
+        "displayName": "按钮悬停灰",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "button-pressed": {
+        "role": "neutral",
+        "displayName": "按钮按下灰",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
+        ]
+      },
+      "icon-muted": {
+        "role": "neutral",
+        "displayName": "图形笔画灰",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0.00)",
+          "oklch(26.43% 0.00000 0.00)",
+          "oklch(37.86% 0.00000 0.00)",
+          "oklch(49.29% 0.00000 0.00)",
+          "oklch(60.71% 0.00000 0.00)",
+          "oklch(72.14% 0.00000 0.00)",
+          "oklch(83.57% 0.00000 0.00)",
+          "oklch(95.00% 0.00000 0.00)"
         ]
       }
     },
     "typographyMeta": {
-      "progress-title": {
-        "displayName": "当前步骤",
-        "purpose": "右侧可换行的当前步骤标题；仅字号由源码显式设置。"
+      "body": {
+        "displayName": "系统正文",
+        "purpose": "窗口明确声明 Microsoft YaHei UI, Segoe UI 与13 DIP，主要控件继承该正文大小。"
       },
-      "section-label": {
-        "displayName": "分区标签",
-        "purpose": "顶部「教程助手」标签；字体族、字重与行高继承原生主题。"
+      "help": {
+        "displayName": "任务说明",
+        "purpose": "中间常规与高级说明；源码明确21 DIP行高，允许换行与垂直滚动。"
       },
-      "task-status": {
-        "displayName": "任务次级状态",
-        "purpose": "任务行第二行的小号状态文字。"
+      "status": {
+        "displayName": "主状态",
+        "purpose": "右侧独立状态框；源码明确20 DIP行高，允许换行。"
       }
     },
     "shadows": [],
@@ -145,87 +179,114 @@
   },
   "components": [
     {
-      "name": "分区标题",
+      "name": "任务详情选择器",
       "kind": "custom",
-      "refersTo": "section-header",
-      "description": "源码中的蓝色分区标签与1 DIP底部分隔线；文档中的px按同数值DIP映射。",
-      "html": "<div class=\"ds-section-header\">教程助手</div>",
-      "css": ".ds-section-header { font: menu; font-size: 15px; color: #49ABDF; background: #1C1C1C; padding: 8px 12px; border-bottom: 1px solid #178DD4; }"
+      "refersTo": "task-selector",
+      "description": "复选框负责执行范围，名称与齿轮负责详情选择；仅展示控件样式，HTML预览不执行WPF任务。",
+      "html": "<div class=\"ds-task-row\"><input class=\"ds-task-enable\" type=\"checkbox\" checked aria-label=\"启用通过 MAA 新手教程任务\"><label class=\"ds-task-label\"><input class=\"ds-task-radio\" type=\"radio\" name=\"ds-task\" checked><span class=\"ds-task-selector\"><span>通过 MAA 新手教程</span><svg class=\"ds-task-gear\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M10,1 H14 L14.7,4.1 L16.1,4.7 L18.8,3.1 L21.6,5.9 L20,8.6 L20.6,10 H23 V14 H20.6 L20,15.4 L21.6,18.1 L18.8,20.9 L16.1,19.3 L14.7,19.9 L14,23 H10 L9.3,19.9 L7.9,19.3 L5.2,20.9 L2.4,18.1 L4,15.4 L3.4,14 H1 V10 H3.4 L4,8.6 L2.4,5.9 L5.2,3.1 L7.9,4.7 L9.3,4.1 Z M12,8 A4,4 0 1 0 12,16 A4,4 0 1 0 12,8 Z\" fill-rule=\"evenodd\"/></svg></span></label></div>",
+      "css": ".ds-task-row{display:grid;grid-template-columns:24px 1fr;align-items:center;background:#1C1C1C;font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;color:#EEEEEE}.ds-task-enable{color-scheme:dark;accent-color:#008DDB}.ds-task-label{position:relative;cursor:pointer}.ds-task-radio{position:absolute;opacity:0;width:1px;height:1px}.ds-task-selector{display:grid;grid-template-columns:1fr 24px;align-items:center;height:32px;border:1px solid transparent;border-radius:2px;padding:0 4px}.ds-task-gear{fill:transparent;stroke:#888888;stroke-width:1.1}.ds-task-radio:checked+.ds-task-selector .ds-task-gear{fill:#008DDB;stroke:#008DDB}.ds-task-label:hover .ds-task-selector{background:#262626}.ds-task-radio:focus-visible+.ds-task-selector{border-color:#008DDB}"
     },
     {
-      "name": "教程任务行",
-      "kind": "card",
-      "refersTo": "task-row",
-      "description": "实际双行任务结构；正文系统字体在HTML中用menu字体映射，不声明固定中文字体族。",
-      "html": "<div class=\"ds-task-row\"><div>通过 MAA 新手教程</div><div class=\"ds-task-status\">已完成</div></div>",
-      "css": ".ds-task-row { font: menu; color: #EEEEEE; background: #1C1C1C; border: 1px solid #414141; border-radius: 3px; padding: 12px; } .ds-task-status { font-size: 12px; color: #B3B3B3; margin-top: 6px; }"
+      "name": "扁平辅助按钮",
+      "kind": "button",
+      "refersTo": "button-flat",
+      "description": "加号、全选、清空共用的自定义模板；禁用时不透明度0.45。",
+      "html": "<button class=\"ds-flat-button\" type=\"button\">全选</button>",
+      "css": ".ds-flat-button{font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;color:#B3B3B3;background:transparent;border:1px solid #303034;border-radius:3px;padding:4px 8px;cursor:pointer;}.ds-flat-button:hover{background:#292929}.ds-flat-button:active{background:#333333}.ds-flat-button:focus-visible{border-color:#008DDB;outline:none}.ds-flat-button:disabled{opacity:.45;cursor:default}"
     },
     {
-      "name": "当前步骤",
-      "kind": "custom",
-      "refersTo": "progress-heading",
-      "description": "完成态主状态；真实窗口中的可用宽度来自右侧弹性列。",
-      "html": "<div class=\"ds-progress-heading\">教程完成，原主题已恢复</div>",
-      "css": ".ds-progress-heading { font: menu; font-size: 18px; color: #EEEEEE; background: #1C1C1C; margin-bottom: 14px; overflow-wrap: break-word; }"
+      "name": "开始按钮",
+      "kind": "button",
+      "refersTo": "run-button",
+      "description": "左下108×52 DIP；打开后等待，点击后执行勾选任务，清空全部勾选时禁用。",
+      "html": "<button class=\"ds-run-button\" type=\"button\">开始</button>",
+      "css": ".ds-run-button{font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;color:#B3B3B3;background:transparent;border:1px solid #303034;border-radius:3px;padding:4px 8px;cursor:pointer;width:108px;height:52px}.ds-run-button:hover{background:#292929}.ds-run-button:active{background:#333333}.ds-run-button:focus-visible{border-color:#008DDB;outline:none}.ds-run-button:disabled{opacity:.45;cursor:default}"
     },
     {
-      "name": "只读日志",
+      "name": "运行中停止按钮",
+      "kind": "button",
+      "refersTo": "run-button",
+      "description": "开始按钮在运行中换为停止；中断也可使用F8，请求停止时同一按钮暂时禁用。",
+      "html": "<button class=\"ds-stop-button\" type=\"button\">停止</button>",
+      "css": ".ds-stop-button{font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;color:#B3B3B3;background:transparent;border:1px solid #303034;border-radius:3px;padding:4px 8px;cursor:pointer;width:108px;height:52px}.ds-stop-button:hover{background:#292929}.ds-stop-button:active{background:#333333}.ds-stop-button:focus-visible{border-color:#008DDB;outline:none}.ds-stop-button:disabled{opacity:.45;cursor:default}"
+    },
+    {
+      "name": "圆圈加号按钮",
+      "kind": "button",
+      "refersTo": "button-flat",
+      "description": "17×17 DIP内联圆圈加号；打开单项原生菜单，恢复任务添加后只禁用对应菜单项。",
+      "html": "<button class=\"ds-add-button\" type=\"button\" aria-label=\"添加任务\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 17 17\" aria-hidden=\"true\"><circle cx=\"8.5\" cy=\"8.5\" r=\"8\" fill=\"none\" stroke=\"#888888\" stroke-width=\"1\"/><path d=\"M4 8.5 H13 M8.5 4 V13\" fill=\"none\" stroke=\"#888888\" stroke-width=\"1\"/></svg></button>",
+      "css": ".ds-add-button{font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;color:#B3B3B3;background:transparent;border:1px solid #303034;border-radius:3px;padding:4px 8px;cursor:pointer;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center}.ds-add-button:hover{background:#292929}.ds-add-button:active{background:#333333}.ds-add-button:focus-visible{border-color:#008DDB;outline:none}.ds-add-button:disabled{opacity:.45;cursor:default}"
+    },
+    {
+      "name": "只读详情字段",
+      "kind": "input",
+      "refersTo": "field-readonly",
+      "description": "源码明确底色、描边、内边距与最小高度；文本框未覆写的主题焦点效果不由HTML预览证明。",
+      "html": "<textarea class=\"ds-field-readonly\" readonly rows=\"1\" aria-label=\"目标窗口\">自动查找已打开的 MAA</textarea>",
+      "css": ".ds-field-readonly{font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;color:#B3B3B3;background:#1C1C1C;border:1px solid #303034;padding:6px 8px;min-height:30px;white-space:pre-wrap;resize:none;color-scheme:dark}.ds-field-readonly:hover{border-color:#303034}.ds-field-readonly:focus-visible{outline:auto}"
+    },
+    {
+      "name": "说明与日志分段标签",
+      "kind": "nav",
+      "refersTo": "segment",
+      "description": "说明切换常规/高级，日志切换全部/当前任务；原生实现为RadioButton，预览保留选中、悬停和键盘焦点样式。",
+      "html": "<div class=\"ds-segments\" role=\"group\" aria-label=\"任务说明\"><label class=\"ds-segment-label\"><input class=\"ds-segment-input\" type=\"radio\" name=\"ds-detail-tab\" checked><span class=\"ds-segment\">常规设置</span></label><label class=\"ds-segment-label\"><input class=\"ds-segment-input\" type=\"radio\" name=\"ds-detail-tab\"><span class=\"ds-segment\">高级设置</span></label></div>",
+      "css": ".ds-segments{display:grid;grid-template-columns:1fr 1fr;background:#1C1C1C;font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;color:#EEEEEE}.ds-segment-label{position:relative;cursor:pointer}.ds-segment-input{position:absolute;opacity:0;width:1px;height:1px}.ds-segment{display:flex;align-items:center;justify-content:center;height:30px;padding:2px 6px;border:1px solid #414146}.ds-segment-input:checked+.ds-segment{color:#009DEB;border-color:#008DDB}.ds-segment-label:hover .ds-segment{background:#262626}.ds-segment-input:focus-visible+.ds-segment{border-width:2px}"
+    },
+    {
+      "name": "只读运行日志",
       "kind": "input",
       "refersTo": "log-view",
-      "description": "只读、多行、可选择与滚动的日志；rows仅提供文档示例高度，实际WPF占剩余空间。",
-      "html": "<textarea class=\"ds-log-view\" readonly rows=\"6\" aria-label=\"执行日志\">20:52:06 MAA 新手教程已完成。\n20:52:12 已切换为与系统同步。\n20:52:12 已恢复原主题：与系统同步</textarea>",
-      "css": ".ds-log-view { font: menu; color: #D9D9D9; background: #202020; border: 1px solid #414141; padding: 12px; color-scheme: dark; white-space: pre-wrap; overflow-y: auto; resize: none; } .ds-log-view:hover { border-color: #414141; } .ds-log-view:focus-visible { outline: auto; }"
+      "description": "透明日志面继承窗口底色；8 DIP内边距、98至350 DIP文本高度和自动滚动，示例行数仅用于文档预览。",
+      "html": "<div class=\"ds-log-frame\"><textarea class=\"ds-log-view\" readonly rows=\"6\" aria-label=\"任务运行日志\">当前任务暂无日志。\n点击开始后在此显示执行记录。</textarea></div>",
+      "css": ".ds-log-frame{background:#1C1C1C;border:1px solid #414146;border-radius:4px;min-height:100px}.ds-log-view{font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;color:#B3B3B3;background:transparent;border:0;padding:8px;min-height:98px;max-height:350px;white-space:pre-wrap;overflow-y:auto;resize:none;color-scheme:dark;width:100%;box-sizing:border-box}.ds-log-view:hover{background:transparent}.ds-log-view:focus-visible{outline:auto}"
     },
     {
-      "name": "添加任务按钮",
-      "kind": "button",
-      "refersTo": "add-button",
-      "description": "真实加号路径与按钮高度；浏览器原生深色按钮示意继承控件，其边框、焦点和交互不作为HandyControl像素证据。",
-      "html": "<button class=\"ds-add-button\" type=\"button\" aria-label=\"添加任务\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M0 6 H12 M6 0 V12\" fill=\"none\" stroke=\"#49ABDF\" stroke-width=\"1.5\"/></svg></button>",
-      "css": ".ds-add-button { font: menu; height: 34px; color-scheme: dark; margin-top: 12px; } .ds-add-button:hover svg { stroke: #49ABDF; } .ds-add-button:focus-visible { outline: auto; } .ds-add-button:active svg { stroke: #49ABDF; }"
-    },
-    {
-      "name": "停止按钮",
-      "kind": "button",
-      "refersTo": "stop-button",
-      "description": "源码明确宽度150 DIP；原生浏览器状态仅翻译主题继承，实际运行中启用，完成后禁用。",
-      "html": "<button class=\"ds-stop-button\" type=\"button\">停止（F8）</button>",
-      "css": ".ds-stop-button { font: menu; width: 150px; color-scheme: dark; } .ds-stop-button:hover:not(:disabled) { color: #EEEEEE; } .ds-stop-button:focus-visible { outline: auto; } .ds-stop-button:active:not(:disabled) { color: #EEEEEE; }"
-    },
-    {
-      "name": "重试按钮",
-      "kind": "button",
-      "refersTo": "retry-button",
-      "description": "源码明确宽度100 DIP与左边距12 DIP；实际运行中禁用，结束后启用，具体主题状态由HandyControl继承。",
-      "html": "<button class=\"ds-retry-button\" type=\"button\">重试</button>",
-      "css": ".ds-retry-button { font: menu; width: 100px; margin-left: 12px; color-scheme: dark; } .ds-retry-button:hover:not(:disabled) { color: #EEEEEE; } .ds-retry-button:focus-visible { outline: auto; } .ds-retry-button:active:not(:disabled) { color: #EEEEEE; }"
+      "name": "独立主状态框",
+      "kind": "custom",
+      "refersTo": "status-panel",
+      "description": "日志下方4 DIP间距的可换行主状态，默认等待开始，使用文字表达完成、中断与异常。",
+      "html": "<div class=\"ds-status-panel\">等待开始</div>",
+      "css": ".ds-status-panel{font-family:\"Microsoft YaHei UI\",\"Segoe UI\",sans-serif;font-size:13px;line-height:20px;color:#B3B3B3;background:#1C1C1C;border:1px solid #414146;border-radius:4px;margin-top:4px;padding:8px;overflow-wrap:break-word}"
     }
   ],
   "narrative": {
     "northStar": "MAA 深色任务面板",
-    "overview": "继承用户当前 MAA v6.21.3 的原生深色 WPF 界面。深灰底色、细边框、蓝色强调和紧凑任务布局服务于本地执行状态的持续阅读；本次是在既有身份内实现助手，没有替换视觉世界。\n\n实际实现使用 WPF 与 HandyControl 3.5.1，加载其 `SkinDark.xaml` 和 `Theme.xaml`。界面名称为「MAA 教程助手」，不使用 MAA Logo，未复制 MAA XAML。规范来自 `src/MainWindow.xaml`、`src/MainWindow.xaml.cs`、`src/App.cs` 和完成态截图；未显式设置的控件细节仍由当前 HandyControl 深色主题与 WPF 继承。",
+    "overview": "继承用户指定 MAA 截图的原生深色桌面界面。深灰底色、细边框、蓝色强调和紧凑任务布局服务于本地任务的选择、说明阅读和运行反馈；本轮在既有视觉世界中将主窗口改为三栏。\n\n实际实现使用 Windows WPF 与 HandyControl 3.5.1，加载其 `SkinDark.xaml` 和 `Theme.xaml`。规范以 `src/MainWindow.xaml`、`src/MainWindow.xaml.cs` 和 `src/App.cs` 的当前实现为依据；未覆写的窗口、复选框、菜单及文本框细节仍继承当前原生主题。没有新字体资产、MAA Logo 或官方代码复用。",
     "keyCharacteristics": [
-      "深色窗口与轻微分层的日志面板。",
-      "稀疏蓝色强调，优先突出当前步骤与任务状态。",
-      "紧凑原生桌面控件，保持两项任务的清晰范围。"
+      "深色平面容器，以细灰边框划分任务、字段、日志与状态。",
+      "蓝色用于选中齿轮、分段标签与键盘焦点，运行结果由文字表达。",
+      "紧凑中文桌面文字，围绕两项真实任务组织选择、详情和日志。"
     ],
     "rules": [
       {
         "name": "The Restrained Accent Rule",
         "body": "用文字表达完成、停止与失败；不要给每种运行状态新增一套强调色。",
         "section": "colors"
+      },
+      {
+        "name": "The Native Density Rule",
+        "body": "保持系统中文桌面文字的紧凑密度，用区域、留白和状态表达层级，不以装饰标题扩大界面。",
+        "section": "typography"
+      },
+      {
+        "name": "The Three Regions Rule",
+        "body": "任务选择留在左侧，所选任务详情留在中间，日志和主状态留在右侧；切换任务不改变三个区域的位置。",
+        "section": "layout"
       }
     ],
     "dos": [
       "**Do** 保留原生深色任务面板、浅色正文与稀疏蓝色强调。",
-      "**Do** 以任务行、当前步骤和可滚动日志同时呈现进度。",
-      "**Do** 保留继承的原生控件状态与键盘焦点，新增覆写前核查 HandyControl 资源。",
-      "**Do** 分别记录功能验收和真实 Windows 截图的视觉验收范围。"
+      "**Do** 保留任务勾选与详情选择的不同职责，以及详情和当前任务日志的同步切换。",
+      "**Do** 保留可滚动说明、可选择日志和自定义控件的键盘焦点反馈。",
+      "**Do** 分别记录功能验收、用户界面验收和独立视觉审阅的实际覆盖范围。"
     ],
     "donts": [
-      "**Don't** 使用 MAA Logo、复制其 XAML 或宣称官方关系。",
+      "**Don't** 使用 MAA Logo、复制其官方代码或宣称官方关系。",
       "**Don't** 添加无真实功能的分页，或把轻量两任务范围扩成新的工作台。",
-      "**Don't** 把单张完成态截图推广为所有运行状态、DPI、语言与版本均已视觉通过。"
+      "**Don't** 把旧版截图、HTML 预览或用户收尾确认写成新版独立视觉审阅结论。",
+      "**Don't** 将单一环境的结果推广为所有运行状态、DPI、语言或 MAA 版本均已通过。"
     ]
   }
 }

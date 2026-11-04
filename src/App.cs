@@ -34,7 +34,7 @@ public sealed class App : Application
                 {
                     Source = new Uri($"pack://application:,,,/HandyControl;component/Themes/{theme}")
                 });
-            app.Run(new MainWindow(autoRun: !args.Contains("--preview-ui")));
+            app.Run(new MainWindow(preview: args.Contains("--preview-ui")));
             return 0;
         }
         catch (Exception ex)
