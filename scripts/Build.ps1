@@ -22,9 +22,14 @@ if ($ForceRestore) {
 & $sdk publish (Join-Path $projectRoot 'src\MaaTutorialAssistant.csproj') -c Release --self-contained false -o $output "-p:MaaScratch=$Scratch"
 if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
 $models = Join-Path $projectRoot 'dependencies\ocr'
+& (Join-Path $PSScriptRoot 'Prepare-Models.ps1') -Scratch $Scratch
 if (Test-Path -LiteralPath $models) {
     $modelOutput = Join-Path $output 'resources\model'
     New-Item -ItemType Directory -Path $modelOutput -Force | Out-Null
     Copy-Item -LiteralPath $models -Destination $modelOutput -Recurse -Force
+}
+Copy-Item -LiteralPath (Join-Path $projectRoot 'licenses') -Destination $output -Recurse -Force
+foreach ($notice in @('LICENSE','THIRD_PARTY_NOTICES.md','README.md')) {
+    Copy-Item -LiteralPath (Join-Path $projectRoot $notice) -Destination $output -Force
 }
 Write-Output $output

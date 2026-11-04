@@ -9,3 +9,5 @@ dependencies/
 test-environments/
 releases/
 data/
+# Private screenshots retained for the native HUD review.
+.impeccable/review/

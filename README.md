@@ -1,31 +1,55 @@
 # MAA 教程助手
 
-基于 MaaFramework 的 Windows 桌面工具。启动后自动寻找已打开的 MAA 教程窗口，记录原始主题，通过 MAA 设置切换到深色，然后完成新手教程。用户可通过「＋」添加「恢复原主题」任务。
+基于 MaaFramework 的 Windows x64 本地工具。启动即寻找已经打开的 MAA 教程窗口，保存原主题、通过设置强制切为暗色，逐页完成教程及任务演示。通过 HUD 的「＋」可追加「恢复原主题」，精确恢复亮色、暗色或与系统同步。
 
-## 当前进度
+## 使用
 
-**当前阶段：S1 框架接入进行中。已有可构建的窗口截图/OCR 探针与 HUD 骨架，尚未实现自动通过教程和主题恢复，不能作为成品使用。**
+1. 打开 **MAA v6.21.3 简体中文新手教程**，只保留一个 MAA 窗口。
+2. 运行 `releases/current/MaaTutorialAssistant.exe`，它会自动执行。
+3. 若需要结束后恢复 MAA 原主题，点击助手「＋」→「恢复原主题」。不添加则保持暗色。
+4. **F8** 或「停止」中断；「重试」继续。运行期间程序会占用鼠标与键盘，让 MAA 保持可见，并避免同时操作其他窗口。
 
-当前开发保存在 `feature/framework-bootstrap` 的 WIP 提交中。用户按 Esc 停止界面控制后，本轮停止窗口操作。
+本机已安装 .NET 8 Windows Desktop Runtime。分发给其他电脑时也需要该 x64 运行时；本构建没有打包整套运行时。禁止把 EXE 单独移出其运行库和 resources 所在目录。
 
-- [任务书](docs/任务书.md)：范围、任务拆分、交付物与验收。
-- [开发过程](docs/开发过程.md)：按步骤追加的开发记录、验证与问题。
-- [项目状态](docs/项目状态.md)：维护入口、当前进度、依赖与未完成项。
-- [技术方案](docs/技术方案.md)：窗口控制、主题恢复、任务执行和数据边界。
-- [产品约束](PRODUCT.md)与[界面约束](DESIGN.md)。
+助手 HUD 固定暗色。教程完成后仍可通过加号恢复主题；同一个 MAA 进程中的中断/重启会复用原主题记录。MAA 退出重启后，旧记录仍保留，但不会自动套用到另一个进程。
 
-## 正式目录
+## 兼容边界
 
-项目维护入口是本目录，后续源码放在 `src/`，构建、启动与验证脚本放在 `scripts/`。
+- 已针对本机 v6.21.3、中文、144 DPI、实际多屏环境验证。**v6.21.4、其他语言和其他缩放比例尚未验证**。
+- 采用 MaaFramework ScreenDC 前台截图、OCR/ColorMatch、Win32 输入；后台截图在本机初始化失败，因此运行会将 MAA 置前。
+- 不连接游戏，不运行游戏任务，不修改教程完成标记。开发测试使用 `test-environments/maa-v6.21.3` 的独立安装，并禁用游戏核心初始化。
+- 目标丢失、多开、版本不符、OCR 不符、操作超时均停止后续输入。异常证据与原主题记录保留在运行目录的 `data/`。
 
-必要的本地依赖归入 `dependencies/`，正式隔离测试环境归入 `test-environments/`，交付构建归入 `releases/`。这些目录不提交二进制或用户数据，实际落地后提供版本、来源与 SHA256 清单。
+## 构建与复现
 
-日志、截图、下载压缩包和构建中间物统一使用工作区 `tmp/agent-scratch/` 下的本任务目录。应用保存的「原主题恢复记录」属于必要状态，不得当作可随意清除的缓存。
+在 PowerShell 7 中运行：
 
-## 首版边界
+```powershell
+./scripts/Build.ps1 -ForceRestore
+./scripts/Prepare-TestFixture.ps1 -Source '你的 MAA v6.21.3 安装路径'
+./scripts/Reset-TestFixture.ps1 -Theme Light -Launch
+```
 
-只实现「通过 MAA 新手教程」和按需添加的「恢复原主题」两项任务。HUD 继承当前 MAA 的深色 WPF 界面结构，不增加游戏自动化、云服务或模型服务。
+关闭隔离副本后才可重置。Prepare 只首次运行，附原安装全部文件 SHA256 清单；后续使用 Reset。SDK 8.0.427、NuGet 锁文件、模型固定提交与哈希均纳入复现路径。
 
-首先验证本机 MAA v6.21.3。v6.21.4 的步骤顺序不同，未经实际回归不能宣称支持。
+仅对带项目标记的隔离副本运行无界面回归：
 
-本项目目前没有远程仓库，也未推送或发布。
+```powershell
+$run = 'D:\AI_work_space\tmp\agent-scratch\20261104-194014-maa-tutorial-dev\my-run'
+New-Item -ItemType Directory -Path $run -Force | Out-Null
+$process = Start-Process ./releases/current/MaaTutorialAssistant.exe -ArgumentList '--run-fixture',$run,'--restore' -WindowStyle Hidden -RedirectStandardOutput "$run/host.stdout.log" -RedirectStandardError "$run/host.stderr.log" -Wait -PassThru
+if ($process.ExitCode -ne 0) { throw 'Regression failed; inspect the run log.' }
+./scripts/Verify-Run.ps1 -ResultDirectory $run -OriginalTheme Light -Restore -CheckOriginal
+```
+
+不加 `--restore` 可验证结束保持暗色。`--theme-test <目录>` 只验证主题切换与恢复。`--probe <输出.json>` 导出唯一 MAA 的截图/OCR。`--preview-ui` 仅显示 HUD。
+
+## 目录与记录
+
+- `src/`、`scripts/`：正式源码与构建/验证入口。
+- `dependencies/`：开发 SDK 和模型；`releases/current/`：本机运行构建。二者不混入 Git。
+- `test-environments/`：隔离 MAA、原文件哈希基线与私有验收证据，不公开。
+- [任务书](docs/任务书.md)、[开发过程](docs/开发过程.md)、[项目状态](docs/项目状态.md)、[技术方案](docs/技术方案.md)：范围与真实进度。
+- [第三方声明](THIRD_PARTY_NOTICES.md)：许可、来源与公开分发前仍需完成的事项。
+
+原创助手源码使用 MIT；未复制 MAA Logo、源码或 XAML，不代表官方。当前仅在本机交付，无远程仓库、推送或公开发布。

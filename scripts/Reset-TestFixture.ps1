@@ -1,4 +1,5 @@
-param([ValidateSet('Dark', 'Light', 'SyncWithOs')][string]$Theme = 'Dark', [switch]$Launch)
+param([ValidateSet('Dark', 'Light', 'SyncWithOs')][string]$Theme = 'Dark', [switch]$Launch,
+    [string]$Scratch = 'D:\AI_work_space\tmp\agent-scratch\20261104-194014-maa-tutorial-dev')
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $fixture = [IO.Path]::GetFullPath((Join-Path $projectRoot 'test-environments\maa-v6.21.3'))
@@ -24,9 +25,10 @@ $config.Timers.ScheduledWakeUp = $false
 foreach ($timer in $config.Timers.List) { $timer.IsEnabled = $false }
 $config | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath (Join-Path $fixture 'config\gui.new.json') -Encoding utf8NoBOM
 if ($Launch) {
-    $env:TEMP = Join-Path $projectRoot 'test-environments\runtime-temp'
+    $env:TEMP = Join-Path $Scratch 'fixture-runtime-temp'
     $env:TMP = $env:TEMP
     New-Item -ItemType Directory -Path $env:TEMP -Force | Out-Null
-    Start-Process -FilePath (Join-Path $fixture 'MAA.exe') -WorkingDirectory $fixture -ArgumentList '--skip-core-init', '--skip-startup-auto-run' -WindowStyle Normal | Out-Null
+    $launchId = Get-Date -Format 'yyyyMMdd-HHmmss'
+    Start-Process -FilePath (Join-Path $fixture 'MAA.exe') -WorkingDirectory $fixture -ArgumentList '--skip-core-init', '--skip-startup-auto-run' -WindowStyle Normal -RedirectStandardOutput (Join-Path $Scratch "fixture-$launchId.stdout.log") -RedirectStandardError (Join-Path $Scratch "fixture-$launchId.stderr.log") | Out-Null
 }
 Write-Output ('Fixture ready: ' + $fixture + ' / ' + $Theme)

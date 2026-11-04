@@ -66,6 +66,8 @@ public partial class MainWindow : HandyControl.Controls.Window
             var runner = _runner;
             var token = _cancellation.Token;
             await Task.Run(() => { if (restoreOnly) runner.RunRestore(token); else runner.Run(token); });
+            if (_restoreRequested && runner.TutorialCompleted && !runner.ThemeRestored)
+                await Task.Run(() => runner.RunRestore(token));
             _tutorialCompleted = restoreOnly || runner.TutorialCompleted;
             TutorialStatus.Text = _tutorialCompleted ? "已完成" : "未完成";
             if (runner.ThemeRestored) RestoreStatus.Text = "已恢复";
@@ -73,12 +75,14 @@ public partial class MainWindow : HandyControl.Controls.Window
         }
         catch (OperationCanceledException)
         {
+            _tutorialCompleted |= _runner.TutorialCompleted;
             StatusText.Text = "已停止";
             TutorialStatus.Text = _tutorialCompleted ? "已完成" : "已停止，可重试";
             Log("已停止操作。原主题记录已保留，点击重试可继续。");
         }
         catch (Exception ex)
         {
+            _tutorialCompleted |= _runner.TutorialCompleted;
             StatusText.Text = "需要处理后重试";
             TutorialStatus.Text = _tutorialCompleted ? "已完成" : "未完成";
             Log(ex.Message);

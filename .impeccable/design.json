@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T12:59:42.202Z",
+  "title": "Design System: MAA 教程助手",
+  "extensions": {
+    "colorMeta": {
+      "accent-line": {
+        "role": "primary",
+        "displayName": "分隔线蓝",
+        "canonical": "#178DD4",
+        "tonalRamp": [
+          "oklch(15.00% 0.14312 243.00)",
+          "oklch(26.43% 0.14312 243.00)",
+          "oklch(37.86% 0.14312 243.00)",
+          "oklch(49.29% 0.14312 243.00)",
+          "oklch(60.71% 0.14312 243.00)",
+          "oklch(72.14% 0.14312 243.00)",
+          "oklch(83.57% 0.14312 243.00)",
+          "oklch(95.00% 0.14312 243.00)"
+        ]
+      },
+      "accent-content": {
+        "role": "primary",
+        "displayName": "标题与加号蓝",
+        "canonical": "#49ABDF",
+        "tonalRamp": [
+          "oklch(15.00% 0.11839 235.23)",
+          "oklch(26.43% 0.11839 235.23)",
+          "oklch(37.86% 0.11839 235.23)",
+          "oklch(49.29% 0.11839 235.23)",
+          "oklch(60.71% 0.11839 235.23)",
+          "oklch(72.14% 0.11839 235.23)",
+          "oklch(83.57% 0.11839 235.23)",
+          "oklch(95.00% 0.11839 235.23)"
+        ]
+      },
+      "window": {
+        "role": "neutral",
+        "displayName": "窗口深灰",
+        "canonical": "#1C1C1C",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0)",
+          "oklch(26.43% 0.00000 0)",
+          "oklch(37.86% 0.00000 0)",
+          "oklch(49.29% 0.00000 0)",
+          "oklch(60.71% 0.00000 0)",
+          "oklch(72.14% 0.00000 0)",
+          "oklch(83.57% 0.00000 0)",
+          "oklch(95.00% 0.00000 0)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "正文浅灰",
+        "canonical": "#EEEEEE",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0)",
+          "oklch(26.43% 0.00000 0)",
+          "oklch(37.86% 0.00000 0)",
+          "oklch(49.29% 0.00000 0)",
+          "oklch(60.71% 0.00000 0)",
+          "oklch(72.14% 0.00000 0)",
+          "oklch(83.57% 0.00000 0)",
+          "oklch(95.00% 0.00000 0)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "描边灰",
+        "canonical": "#414141",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0)",
+          "oklch(26.43% 0.00000 0)",
+          "oklch(37.86% 0.00000 0)",
+          "oklch(49.29% 0.00000 0)",
+          "oklch(60.71% 0.00000 0)",
+          "oklch(72.14% 0.00000 0)",
+          "oklch(83.57% 0.00000 0)",
+          "oklch(95.00% 0.00000 0)"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "次级文字灰",
+        "canonical": "#B3B3B3",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0)",
+          "oklch(26.43% 0.00000 0)",
+          "oklch(37.86% 0.00000 0)",
+          "oklch(49.29% 0.00000 0)",
+          "oklch(60.71% 0.00000 0)",
+          "oklch(72.14% 0.00000 0)",
+          "oklch(83.57% 0.00000 0)",
+          "oklch(95.00% 0.00000 0)"
+        ]
+      },
+      "log-surface": {
+        "role": "neutral",
+        "displayName": "日志深灰",
+        "canonical": "#202020",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0)",
+          "oklch(26.43% 0.00000 0)",
+          "oklch(37.86% 0.00000 0)",
+          "oklch(49.29% 0.00000 0)",
+          "oklch(60.71% 0.00000 0)",
+          "oklch(72.14% 0.00000 0)",
+          "oklch(83.57% 0.00000 0)",
+          "oklch(95.00% 0.00000 0)"
+        ]
+      },
+      "log-text": {
+        "role": "neutral",
+        "displayName": "日志文字灰",
+        "canonical": "#D9D9D9",
+        "tonalRamp": [
+          "oklch(15.00% 0.00000 0)",
+          "oklch(26.43% 0.00000 0)",
+          "oklch(37.86% 0.00000 0)",
+          "oklch(49.29% 0.00000 0)",
+          "oklch(60.71% 0.00000 0)",
+          "oklch(72.14% 0.00000 0)",
+          "oklch(83.57% 0.00000 0)",
+          "oklch(95.00% 0.00000 0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "progress-title": {
+        "displayName": "当前步骤",
+        "purpose": "右侧可换行的当前步骤标题；仅字号由源码显式设置。"
+      },
+      "section-label": {
+        "displayName": "分区标签",
+        "purpose": "顶部「教程助手」标签；字体族、字重与行高继承原生主题。"
+      },
+      "task-status": {
+        "displayName": "任务次级状态",
+        "purpose": "任务行第二行的小号状态文字。"
+      }
+    },
+    "shadows": [],
+    "motion": [],
+    "breakpoints": []
+  },
+  "components": [
+    {
+      "name": "分区标题",
+      "kind": "custom",
+      "refersTo": "section-header",
+      "description": "源码中的蓝色分区标签与1 DIP底部分隔线；文档中的px按同数值DIP映射。",
+      "html": "<div class=\"ds-section-header\">教程助手</div>",
+      "css": ".ds-section-header { font: menu; font-size: 15px; color: #49ABDF; background: #1C1C1C; padding: 8px 12px; border-bottom: 1px solid #178DD4; }"
+    },
+    {
+      "name": "教程任务行",
+      "kind": "card",
+      "refersTo": "task-row",
+      "description": "实际双行任务结构；正文系统字体在HTML中用menu字体映射，不声明固定中文字体族。",
+      "html": "<div class=\"ds-task-row\"><div>通过 MAA 新手教程</div><div class=\"ds-task-status\">已完成</div></div>",
+      "css": ".ds-task-row { font: menu; color: #EEEEEE; background: #1C1C1C; border: 1px solid #414141; border-radius: 3px; padding: 12px; } .ds-task-status { font-size: 12px; color: #B3B3B3; margin-top: 6px; }"
+    },
+    {
+      "name": "当前步骤",
+      "kind": "custom",
+      "refersTo": "progress-heading",
+      "description": "完成态主状态；真实窗口中的可用宽度来自右侧弹性列。",
+      "html": "<div class=\"ds-progress-heading\">教程完成，原主题已恢复</div>",
+      "css": ".ds-progress-heading { font: menu; font-size: 18px; color: #EEEEEE; background: #1C1C1C; margin-bottom: 14px; overflow-wrap: break-word; }"
+    },
+    {
+      "name": "只读日志",
+      "kind": "input",
+      "refersTo": "log-view",
+      "description": "只读、多行、可选择与滚动的日志；rows仅提供文档示例高度，实际WPF占剩余空间。",
+      "html": "<textarea class=\"ds-log-view\" readonly rows=\"6\" aria-label=\"执行日志\">20:52:06 MAA 新手教程已完成。\n20:52:12 已切换为与系统同步。\n20:52:12 已恢复原主题：与系统同步</textarea>",
+      "css": ".ds-log-view { font: menu; color: #D9D9D9; background: #202020; border: 1px solid #414141; padding: 12px; color-scheme: dark; white-space: pre-wrap; overflow-y: auto; resize: none; } .ds-log-view:hover { border-color: #414141; } .ds-log-view:focus-visible { outline: auto; }"
+    },
+    {
+      "name": "添加任务按钮",
+      "kind": "button",
+      "refersTo": "add-button",
+      "description": "真实加号路径与按钮高度；浏览器原生深色按钮示意继承控件，其边框、焦点和交互不作为HandyControl像素证据。",
+      "html": "<button class=\"ds-add-button\" type=\"button\" aria-label=\"添加任务\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" aria-hidden=\"true\"><path d=\"M0 6 H12 M6 0 V12\" fill=\"none\" stroke=\"#49ABDF\" stroke-width=\"1.5\"/></svg></button>",
+      "css": ".ds-add-button { font: menu; height: 34px; color-scheme: dark; margin-top: 12px; } .ds-add-button:hover svg { stroke: #49ABDF; } .ds-add-button:focus-visible { outline: auto; } .ds-add-button:active svg { stroke: #49ABDF; }"
+    },
+    {
+      "name": "停止按钮",
+      "kind": "button",
+      "refersTo": "stop-button",
+      "description": "源码明确宽度150 DIP；原生浏览器状态仅翻译主题继承，实际运行中启用，完成后禁用。",
+      "html": "<button class=\"ds-stop-button\" type=\"button\">停止（F8）</button>",
+      "css": ".ds-stop-button { font: menu; width: 150px; color-scheme: dark; } .ds-stop-button:hover:not(:disabled) { color: #EEEEEE; } .ds-stop-button:focus-visible { outline: auto; } .ds-stop-button:active:not(:disabled) { color: #EEEEEE; }"
+    },
+    {
+      "name": "重试按钮",
+      "kind": "button",
+      "refersTo": "retry-button",
+      "description": "源码明确宽度100 DIP与左边距12 DIP；实际运行中禁用，结束后启用，具体主题状态由HandyControl继承。",
+      "html": "<button class=\"ds-retry-button\" type=\"button\">重试</button>",
+      "css": ".ds-retry-button { font: menu; width: 100px; margin-left: 12px; color-scheme: dark; } .ds-retry-button:hover:not(:disabled) { color: #EEEEEE; } .ds-retry-button:focus-visible { outline: auto; } .ds-retry-button:active:not(:disabled) { color: #EEEEEE; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "MAA 深色任务面板",
+    "overview": "继承用户当前 MAA v6.21.3 的原生深色 WPF 界面。深灰底色、细边框、蓝色强调和紧凑任务布局服务于本地执行状态的持续阅读；本次是在既有身份内实现助手，没有替换视觉世界。\n\n实际实现使用 WPF 与 HandyControl 3.5.1，加载其 `SkinDark.xaml` 和 `Theme.xaml`。界面名称为「MAA 教程助手」，不使用 MAA Logo，未复制 MAA XAML。规范来自 `src/MainWindow.xaml`、`src/MainWindow.xaml.cs`、`src/App.cs` 和完成态截图；未显式设置的控件细节仍由当前 HandyControl 深色主题与 WPF 继承。",
+    "keyCharacteristics": [
+      "深色窗口与轻微分层的日志面板。",
+      "稀疏蓝色强调，优先突出当前步骤与任务状态。",
+      "紧凑原生桌面控件，保持两项任务的清晰范围。"
+    ],
+    "rules": [
+      {
+        "name": "The Restrained Accent Rule",
+        "body": "用文字表达完成、停止与失败；不要给每种运行状态新增一套强调色。",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "**Do** 保留原生深色任务面板、浅色正文与稀疏蓝色强调。",
+      "**Do** 以任务行、当前步骤和可滚动日志同时呈现进度。",
+      "**Do** 保留继承的原生控件状态与键盘焦点，新增覆写前核查 HandyControl 资源。",
+      "**Do** 分别记录功能验收和真实 Windows 截图的视觉验收范围。"
+    ],
+    "donts": [
+      "**Don't** 使用 MAA Logo、复制其 XAML 或宣称官方关系。",
+      "**Don't** 添加无真实功能的分页，或把轻量两任务范围扩成新的工作台。",
+      "**Don't** 把单张完成态截图推广为所有运行状态、DPI、语言与版本均已视觉通过。"
+    ]
+  }
+}

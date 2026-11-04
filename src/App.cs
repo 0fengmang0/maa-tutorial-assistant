@@ -8,6 +8,8 @@ public sealed class App : Application
     [STAThread]
     public static int Main(string[] args)
     {
+        using var instance = new Mutex(true, "Local\\MaaTutorialAssistant", out var firstInstance);
+        if (!firstInstance) { MessageBox.Show("教程助手已经运行。", "MAA 教程助手"); return 1; }
         var app = new App();
         try
         {

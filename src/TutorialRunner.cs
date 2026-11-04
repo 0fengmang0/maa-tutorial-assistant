@@ -27,17 +27,25 @@ public sealed class TutorialRunner(string stateDirectory, string evidenceDirecto
         _session = session;
         try
         {
+            if (!target.Title.Contains("v6.21.3")) throw new InvalidOperationException("当前版本仅验证了 MAA v6.21.3，请使用对应版本。");
+            var saved = SessionState.Load(stateDirectory, target);
             Read();
             if (Has("请输入新的任务名称")) FinishRenameDialog();
             if (!Has("设置指引"))
             {
                 Tap(Require("长草", t => t.Y < session.Height * .1));
+                if (!Has("设置指引") && saved is { TutorialCompleted: true })
+                {
+                    _state = saved;
+                    TutorialCompleted = true;
+                    report("当前 MAA 的教程已由本助手完成。");
+                    if (RestoreRequested && !saved.Restored) RestoreTheme();
+                    return;
+                }
                 WaitFor(() => Has("设置指引"), "目标 MAA 当前不在新手教程中，请打开教程后重试。");
             }
-            if (!target.Title.Contains("v6.21.3")) throw new InvalidOperationException("当前版本仅验证了 MAA v6.21.3，请使用对应版本。");
             OpenThemeSettings();
             var currentTheme = ReadTheme();
-            var saved = SessionState.Load(stateDirectory, target);
             _state = saved is { Restored: false } ? saved : new(target.Executable, target.ProcessId, target.StartedUtcTicks, currentTheme);
             _state.Save(stateDirectory, target);
             report("已保存原主题：" + ThemeLabel(_state.OriginalTheme));
@@ -59,7 +67,7 @@ public sealed class TutorialRunner(string stateDirectory, string evidenceDirecto
         }
         catch
         {
-            if (_screen.Count > 0) Capture("interrupted");
+            if (session.LastPng.Length > 0) Capture("interrupted");
             session.Stop();
             throw;
         }
@@ -96,10 +104,16 @@ public sealed class TutorialRunner(string stateDirectory, string evidenceDirecto
 
     private void Read()
     {
-        _token.ThrowIfCancellationRequested();
-        _screen = _session!.Read(_token);
-        if (!_screen.Any(t => t.Y < _session.Height * .10 && t.Text.Contains("MAA")))
-            throw new InvalidOperationException("截图中未确认 MAA 标题，已停止输入。请将目标窗口置于前台后重试。");
+        var waiting = Stopwatch.StartNew();
+        do
+        {
+            _token.ThrowIfCancellationRequested();
+            _screen = _session!.Read(_token);
+            if (_screen.Any(t => t.Y < _session.Height * .10 && t.Text.Contains("MAA"))) return;
+            // A newly created WPF window can be discoverable before its first rendered frame.
+            Pause(250);
+        } while (waiting.Elapsed < TimeSpan.FromSeconds(5));
+        throw new InvalidOperationException("截图中未确认 MAA 标题，已停止输入。请将目标窗口置于前台后重试。");
     }
 
     private bool Has(string text) => _screen.Any(t => t.Normalized.Contains(text));
@@ -288,20 +302,20 @@ public sealed class TutorialRunner(string stateDirectory, string evidenceDirecto
             if (!_session.IsChecked(x, mondayY, _token)) Tap(x, mondayY);
             return;
         }
-        if (gate.Contains("添加") && gate.Contains("切换主题") && !gate.Contains("夜间"))
+        if (gate.Contains("添加") && gate.Contains("更换主题") && !gate.Contains("夜间"))
         {
-            AddDemoTask("切换主题");
+            AddDemoTask("更换主题");
             return;
         }
         if (gate.Contains("移到") && gate.Contains("最后"))
         {
-            OpenDemoTaskMenu("切换主题");
+            OpenDemoTaskMenu("更换主题");
             Tap(Require("下移", t => t.X < _session!.Width * .8));
             return;
         }
         if (gate.Contains("夜间"))
         {
-            SelectDemoGear("切换主题");
+            SelectDemoGear("更换主题");
             Tap(Require("添加主题", t => t.X < _session!.Width * .8));
             return;
         }

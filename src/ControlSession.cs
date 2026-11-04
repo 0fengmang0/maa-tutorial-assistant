@@ -190,7 +190,7 @@ public sealed class ControlSession : IDisposable
         File.WriteAllBytes(output + ".png", session.LastPng);
         GetWindowRect(candidates[0].Handle, out var rect);
         DwmGetWindowAttribute(candidates[0].Handle, 9, out var frame, Marshal.SizeOf<NativeRect>());
-        File.WriteAllText(output, JsonSerializer.Serialize(new { Framework = MaaGlobal.Shared.Version, session.Target, session.Width, session.Height,
+        File.WriteAllText(output, JsonSerializer.Serialize(new { Framework = NativeBindingContext.LibraryVersion, session.Target, session.Width, session.Height,
             Dpi = GetDpiForWindow(candidates[0].Handle), WindowBounds = new[] { rect.Left, rect.Top, rect.Right, rect.Bottom },
             PhysicalBounds = new[] { frame.Left, frame.Top, frame.Right, frame.Bottom }, Text = screen }, new JsonSerializerOptions { WriteIndented = true }));
     }
