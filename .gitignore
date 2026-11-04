@@ -1,0 +1,11 @@
+# Local development outputs. Formal source, scripts and documentation stay tracked.
+.vs/
+**/bin/
+**/obj/
+
+# Local runtimes, private test fixtures and packaged binaries are retained on disk
+# with version/source/hash manifests, and are never mixed into source commits.
+dependencies/
+test-environments/
+releases/
+data/
