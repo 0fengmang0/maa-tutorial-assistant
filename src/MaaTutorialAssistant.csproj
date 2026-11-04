@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <AssemblyName>MaaTutorialAssistant</AssemblyName>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Maa.Framework.Binding.Native" Version="5.10.0" />
+    <PackageReference Include="Maa.Framework.Runtime.win-x64" Version="5.10.5" />
+    <PackageReference Include="HandyControl" Version="3.5.1" />
+    <Content Include="resources\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

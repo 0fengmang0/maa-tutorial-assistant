@@ -1,0 +1,19 @@
+{
+  "Repository": "https://github.com/MaaXYZ/MaaCommonAssets",
+  "Commit": "dabcd4681ac990dc4361de26416d986abd80e4aa",
+  "Folder": "OCR/ppocr_v4/zh_cn",
+  "Files": [
+    {
+      "File": "det.onnx",
+      "Hash": "767E663DDED50813DCA0ABC9A49859E345E0F74A48B387661188F096A9211D74"
+    },
+    {
+      "File": "rec.onnx",
+      "Hash": "DA4815EA386EE8083BE319DA8D20E70F4FDB0B6404BA0D2DA7F675831E1B37FA"
+    },
+    {
+      "File": "keys.txt",
+      "Hash": "28B2362AD4AB2DC38769AA72FEB535E3A9DDB3FD2A7585A05920E6393B1DC7F7"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0-windows7.0": {
+      "HandyControl": {
+        "type": "Direct",
+        "requested": "[3.5.1, )",
+        "resolved": "3.5.1",
+        "contentHash": "i2i0xrLev7F1MFnhf0DP1CNCdGw8hVJ0HJrI0kxRv02ZJgaAzLzDTgAXDPY8GAoD3aYnBLSgM74lBHZ844KQnQ=="
+      },
+      "Maa.Framework.Binding.Native": {
+        "type": "Direct",
+        "requested": "[5.10.0, )",
+        "resolved": "5.10.0",
+        "contentHash": "uCFZ1Vk/HffwKVU5uJACztbeobKegfOQTJmEip1fDPlW+4zXtGUCNee5j/e2G2+SVNZv4GOldruXBwuq0Tqd0g==",
+        "dependencies": {
+          "Maa.Framework.Binding": "5.10.0"
+        }
+      },
+      "Maa.Framework.Runtime.win-x64": {
+        "type": "Direct",
+        "requested": "[5.10.5, )",
+        "resolved": "5.10.5",
+        "contentHash": "3B+m77FjnDq4u8LGA+tI8EokZLv1aVlIhzXRon7xsPlM59Ak5Vy84LlGmM14ajvaLeTKGYWSxC/yXuYnaHQoQg=="
+      },
+      "Maa.Framework.Binding": {
+        "type": "Transitive",
+        "resolved": "5.10.0",
+        "contentHash": "wJaYtH6ujslj6gL1W3RQRpkrbEwDexbUU+rSUk2Cr5mJ57R6M+db90oVgBZobAb7EvCCMNiZe3ec5dtDoCV73g=="
+      }
+    },
+    "net8.0-windows7.0/win-x64": {}
+  }
+}

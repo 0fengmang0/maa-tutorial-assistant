@@ -1,0 +1,7 @@
+{
+  "ReadScreen": {
+    "recognition": "OCR",
+    "expected": ".+",
+    "threshold": 0.55
+  }
+}
